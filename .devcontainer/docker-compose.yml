@@ -14,7 +14,7 @@ services:
       - DB_HOST=db
       - DB_PORT=3306
       - DB_DATABASE=${DB_NAME:-go_local}
-      - DB_USERNAME=${DB_USER:-mitsu}
+      - DB_USERNAME=${DB_USER:-go}
       - DB_PASSWORD=${DB_PASS:-secret}
     ports:
       - 8080:8080
@@ -32,17 +32,6 @@ services:
           nocopy: true
     environment:
       - MYSQL_DATABASE=${DB_NAME:-go_local}
-      - MYSQL_USER=${DB_USER:-mitsu}
+      - MYSQL_USER=${DB_USER:-go}
       - MYSQL_PASSWORD=${DB_PASS:-secret}
       - MYSQL_ROOT_PASSWORD=${DB_PASS:-secret}
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    environment:
-      - PMA_ARBITRARY=1
-      - PMA_HOST=db
-      - PMA_USER=mitsu
-      - PMA_PASSWORD=secret
-    links:
-      - db
-    ports:
-      - 4848:80
